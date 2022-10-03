@@ -5,10 +5,6 @@
 #include <SDL.h>
 #endif
 
-#include <vector>
-#include <functional>
-using std::vector;
-
 /* Rect Class */
 class Rect {
 private:
@@ -112,8 +108,6 @@ public:
 };
 
 class Events {
-private:
-	SDL_Event event;
 public:
 	/* Events */
 	virtual void EventQuit()
@@ -123,6 +117,7 @@ public:
 
 	void PollEvent()
 	{
+		SDL_Event event;
 		while(SDL_PollEvent(&event))
 			if(event.type == SDL_QUIT)
 				EventQuit();
